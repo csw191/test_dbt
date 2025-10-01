@@ -1,0 +1,55 @@
+# Python virtual environment
+venv/
+.venv/
+.env/
+.env
+.env.local
+env.*.local
+__pycache__/
+*.pyc
+keys/
+*.pyc
+*.pyo
+*.pyd
+*.egg
+*.egg-info/
+dist/
+build/
+.python-version
+.DS_Store
+.pytest_cache/
+.ipynb_checkpoints
+.idea/
+.mypy_cache/
+.coverage
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# DBT artifacts
+dbt_modules/
+target/
+logs/
+manifest.json
+run_results.json
+.user.yml
+
+# Snowflake credentials and RSA keys
+*.p8
+*.pem
+*.key
+snowflake_creds.json
+.env.snowflake
+
+# VSCode settings
+.vscode/
+.idea
+*.sublime-project
+*.sublime-workspace
+# OS files
+.DS_Store
+Thumbs.db
+
+.direnv/
+EOF
