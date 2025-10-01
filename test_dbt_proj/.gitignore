@@ -1,4 +1,40 @@
+# Ignore Python virtual environment directories
+venv/
+.env/
+.venv/
 
+# Ignore DBT artifacts
+dbt_modules/
 target/
 dbt_packages/
 logs/
+manifest.json
+run_results.json
+
+# Ignore Snowflake credentials and config files
+*.p12
+*.pem
+*.key
+*.crt
+*.csr
+*.der
+*.sso
+snowflake*.json
+snowflake*.yml
+
+# Ignore RSA keys
+*.rsa
+*.pub
+*.priv
+.p8
+
+# Ignore UV (Universal Virtualenv) cache
+__pypackages__/
+
+# Ignore Python bytecode
+*.pyc
+__pycache__/
+
+# Ignore OS-specific files
+.DS_Store
+Thumbs.db
