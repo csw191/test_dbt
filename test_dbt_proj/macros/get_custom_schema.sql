@@ -1,11 +1,7 @@
 -- FILE: macros/get_custom_schema.sql
 {%- macro generate_schema_name(custom_schema_name, node) -%}
-    {%- if custom_schema_name == 'staging' -%}
-        STAGING
-    {%- elif custom_schema_name == 'integration' -%}
-        INTEGRATION
-    {%- elif custom_schema_name == 'presentation' -%}
-        PRESENTATION
+    {%- if custom_schema_name is none -%}
+        {{ target.schema }}
     {%- else -%}
         {{ custom_schema_name | trim | upper }}
     {%- endif -%}
