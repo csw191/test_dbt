@@ -1,12 +1,11 @@
-# profiles.yml (commit this to GitHub)
 shared_snowflake_profile:
   target: dev
   outputs:
     dev:
       type: snowflake
-      # These will be automatically populated by Snowflake's execution context
-      account: "{{ var('database_name', 'HHS_WRKSPC_DB') }}"
-      # No user/password needed - Snowflake uses its own auth
+      account: "{{ var('database_name', 'MONTANA-HHS') }}"
+      user: "snowflake_execution_context"  # Add this - placeholder only
+      # No password needed - Snowflake uses its own auth
       role: HHS_SFLK_PHSD_MIDIS_ANALYST_DEV
       warehouse: HHS_PHSD_MIDIS_DEV_ELT_WH
       database: "{{ var('database_name', 'HHS_WRKSPC_DB') }}"
