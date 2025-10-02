@@ -1,27 +1,14 @@
-# profiles.yml
-
+# profiles.yml (commit this to GitHub)
 shared_snowflake_profile:
-  target: "{{ env_var('DBT_TARGET', 'dev') }}"
+  target: dev
   outputs:
     dev:
       type: snowflake
-      account: "{{ env_var('SNOWFLAKE_ACCOUNT') }}"
-      user: "{{ env_var('SNOWFLAKE_USER') }}"
-      private_key_path: "{{ env_var('SNOWFLAKE_PRIVATE_KEY_PATH') }}"
-      role: "{{ env_var('SNOWFLAKE_ROLE', 'SYSADMIN') }}"
-      warehouse: "{{ env_var('SNOWFLAKE_WAREHOUSE') }}"
-      database: "{{ env_var('SNOWFLAKE_DATABASE') }}"
-      schema: "{{ env_var('SNOWFLAKE_SCHEMA') }}"
-      threads: "{{ env_var('DBT_THREADS', '1') | int }}"
-      client_session_keep_alive: False
-      
-    prod:
-      type: snowflake
-      account: "{{ env_var('SNOWFLAKE_ACCOUNT') }}"
-      user: "{{ env_var('SNOWFLAKE_PROD_USER', env_var('SNOWFLAKE_USER')) }}"
-      private_key_path: "{{ env_var('SNOWFLAKE_PRIVATE_KEY_PATH') }}"
-      role: "{{ env_var('SNOWFLAKE_ROLE', 'SYSADMIN') }}"
-      warehouse: "{{ env_var('SNOWFLAKE_WAREHOUSE') }}"
-      database: "{{ env_var('SNOWFLAKE_DATABASE') }}"
-      schema: prod
-      threads: 4
+      # These will be automatically populated by Snowflake's execution context
+      account: "{{ var('database_name', 'HHS_WRKSPC_DB') }}"
+      # No user/password needed - Snowflake uses its own auth
+      role: HHS_SFLK_PHSD_MIDIS_ANALYST_DEV
+      warehouse: HHS_PHSD_MIDIS_DEV_ELT_WH
+      database: "{{ var('database_name', 'HHS_WRKSPC_DB') }}"
+      schema: "{{ var('staging_schema', 'STAGING') }}"
+      threads: 1
