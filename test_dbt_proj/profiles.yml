@@ -18,5 +18,5 @@ shared_snowflake_profile:
       role: HHS_SFLK_PHSD_MIDIS_ANALYST_DEV
       warehouse: HHS_PHSD_MIDIS_DEV_ELT_WH
       database: "{{ var('database_name', 'HHS_WRKSPC_DB') }}"
-      schema: public
+      schema: "{{ var('schema_name', 'CSW191') }}"
       threads: 4
