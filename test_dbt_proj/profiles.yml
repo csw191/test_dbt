@@ -1,0 +1,10 @@
+shared_snowflake_profile:
+  target: dev
+  outputs:
+    dev:
+      type: snowflake
+      account: "CSW191@MT.GOV"
+      database: "{{ var('database_name') }}"
+      schema: "{{ var('staging_schema') }}"
+      warehouse: HHS_PHSD_MIDIS_DEV_ELT_WH
+      threads: 1
