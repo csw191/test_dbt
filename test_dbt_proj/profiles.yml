@@ -1,13 +1,22 @@
 shared_snowflake_profile:
-  target: dev
+  target: prod
   outputs:
     dev:
       type: snowflake
       account: "{{ var('database_name', 'MONTANA-HHS') }}"
-      user: "snowflake_execution_context"  # Add this - placeholder only
-      # No password needed - Snowflake uses its own auth
+      user: "snowflake_execution_context"
       role: HHS_SFLK_PHSD_MIDIS_ANALYST_DEV
       warehouse: HHS_PHSD_MIDIS_DEV_ELT_WH
       database: "{{ var('database_name', 'HHS_WRKSPC_DB') }}"
-      schema: "{{ var('staging_schema', 'STAGING') }}"
+      schema: public
       threads: 1
+    
+    prod:
+      type: snowflake
+      account: "{{ var('database_name', 'MONTANA-HHS') }}"
+      user: "snowflake_execution_context"
+      role: HHS_SFLK_PHSD_MIDIS_ANALYST_DEV
+      warehouse: HHS_PHSD_MIDIS_DEV_ELT_WH
+      database: "{{ var('database_name', 'HHS_WRKSPC_DB') }}"
+      schema: public
+      threads: 4
